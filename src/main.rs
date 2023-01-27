@@ -4,9 +4,11 @@ mod utils;
 use actix_web::{App,HttpServer};
 use routers::checkserver::checkserver;
 use utils::check_dotenv::check_dotenv;
+use db::model::connect;
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     check_dotenv();
+    connect().await;
     println!("creating httpserver at port {}", 8080);
     HttpServer::new(|| {
         App::new()

@@ -7,7 +7,7 @@ pub async fn connect() -> Client {
     let clientOptions = ClientOptions::parse(mongoUri).await.unwrap();
 
     let client = Client::with_options(clientOptions).unwrap();
-
+    println!("Successfully connected to Client!");
     return client
 }
 
